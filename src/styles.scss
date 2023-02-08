@@ -178,6 +178,77 @@ main {
     }
   }
 }
+
+%rect-div {
+  background-color: $article-color;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.animations {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+.rect {
+  &_keyFrames {
+    @extend %rect-div;
+
+    &:hover .square {
+      animation-play-state: paused;
+      background: $font-secondColor;
+      color: $font-mainColor;
+    }
+
+    .square {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 0%;
+      background: $background-color;
+      color: $font-secondColor;
+      font-size: 10px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      left: 0;
+      animation: square-animation 4s linear infinite alternate 1s;
+    }
+  }
+
+  &_setTimeOut {
+    @extend %rect-div;
+  }
+
+  &_animationFrame {
+    @extend %rect-div;
+  }
+}
+
+@keyframes square-animation {
+  0% {
+    left: 0;
+  }
+  25% {
+    border-radius: 50%;
+  }
+  50% {
+    border-radius: 100%;
+  }
+  75% {
+    border-radius: 50%;
+  }
+  100% {
+    left: 95%;
+  }
+}
+
 .article {
   background-color: $article-color;
   color: $font-secondColor;
