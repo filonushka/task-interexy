@@ -191,8 +191,8 @@ main {
 
 .animations {
   display: flex;
-  flex-direction: column;
   gap: 15px;
+  background-color: $article-color;
   width: 100%;
 }
 .rect {
@@ -222,11 +222,11 @@ main {
     }
   }
 
-  &_setTimeOut {
+  #rect_setInterval {
     @extend %rect-div;
   }
 
-  &_animationFrame {
+  #rect _animationFrame {
     @extend %rect-div;
   }
 }
@@ -245,8 +245,22 @@ main {
     border-radius: 50%;
   }
   100% {
-    left: 95%;
+    left: 90%;
   }
+}
+
+.characters {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+.character-info {
+  background-color: $article-color;
+  color: $font-secondColor;
+  padding: 10px;
+  justify-content: center;
+  width: 50%;
+  flex-grow: 1;
 }
 
 .article {
