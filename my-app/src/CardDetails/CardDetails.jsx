@@ -10,10 +10,16 @@ import Link from "@mui/material/Link";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../store/slices/counterSlice";
 
 function CardDetails() {
   const { id } = useParams();
   const [characterData, setCharacterData] = useState();
+
+  const { count } = useSelector((store) => store.count);
+  const dispatch = useDispatch();
+  console.log(count);
 
   useEffect(() => {
     getCharacterById(id).then((data) => setCharacterData(data));
@@ -21,6 +27,23 @@ function CardDetails() {
 
   return (
     <>
+      <div>
+        <div>
+          <button
+            aria-label="Increment value"
+            onClick={() => dispatch(increment())}
+          >
+            Increment
+          </button>
+          <span>{count}</span>
+          <button
+            aria-label="Decrement value"
+            onClick={() => dispatch(decrement())}
+          >
+            Decrement
+          </button>
+        </div>
+      </div>
       {characterData && (
         <Card key={id} sx={{ maxWidth: 345, padding: "20px" }}>
           <Avatar alt={characterData.name} src={characterData.image} />
